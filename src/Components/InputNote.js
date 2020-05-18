@@ -25,7 +25,7 @@ const InputNote = () => {
         //console.log("body is", body)
         //console.log("BODYYYYY", body)
         db.collection("MyNotes").add({
-            MyTitle: (body.substr(0, 39)+ `........` + theDate),
+            MyTitle: (body.substr(0, 30)+ `..............    Last Updated ` + theDate),
             MyText: description,
             MyDate: theDate
         })
