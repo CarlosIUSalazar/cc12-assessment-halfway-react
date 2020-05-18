@@ -21,7 +21,6 @@ function App() {
   return (
     <Fragment>
     <div className="container">
-      {/* <h1>Code Chrysalis Notes</h1> */}
       <InputNote />
       <ListNotes />
       </div>
@@ -30,9 +29,3 @@ function App() {
 }
 
 export default App;
-
-  // <ul>
-  //   {notes.map(note => (
-  //     <li key={note.MyText}> {note.MyTitle} {note.MyText} {note.MyDate} </li>
-  //   ))}
-  // </ul> 

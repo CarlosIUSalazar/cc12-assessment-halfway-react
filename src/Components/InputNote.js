@@ -8,15 +8,12 @@ const db = firebase.firestore()
 const InputNote = () => {
 
     const [description, setDescription] = useState("")
-//https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch   Speaks about CORS too
-    //const onSubmitForm = async(e) => {  //e is for event
-        //e.preventDefault(); //We dont want this to refresh (?)  46:38
     
     const onSubmitForm = (e) => {
         e.preventDefault();
 
 
-        const body = description;   //ESTABA DESTRUCTURED PERO NO SE PORQUE?! 
+        const body = description;   
         let theDate = moment().startOf('hour').fromNow(); 
         // let description = body;
         // let extractedTitle = description.substr(0, 29);
@@ -36,8 +33,6 @@ const InputNote = () => {
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
-        
-
     }
 
     function deleteNotesOnTable(){
@@ -48,9 +43,7 @@ const InputNote = () => {
             element.ref.delete();
           });
           setTimeout(function(){ window.location = "/" }, 1300);
-          
         });
-        //setTimeout(function(){ window.location.reload(true); }, 1);
       }
 
 
@@ -74,5 +67,3 @@ const InputNote = () => {
 };
 
 export default InputNote;
-
-{/* pon este en linea 29!!  <form className="d-flex mt-5" onSubmit={onSubmitForm}></form> */}

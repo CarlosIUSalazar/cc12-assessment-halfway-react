@@ -8,22 +8,6 @@ const EditNote = ({ note }) => {
 	const [ description, setDescription ] = useState(note.description);
 	//console.log(note)
 
-	// edit description function
-	// const updateDescription = async (e) => {
-	//     e.preventDefault();  //i dont want it to refresh it i want to run my code
-	//     try {
-	//         const body = {description};
-	//         const response = await fetch(`http://localhost:5000/todos/${todo.todo_id2}`, {
-	//             method: "PUT",
-	//             headers: {"Content-Type": "application/json"},
-	//             body: JSON.stringify(body)
-	//         })
-	//         window.location = "/";
-	//         //console.log(response)
-	//     } catch (err) {
-	//         console.error(err.message);
-	//     }
-	// }
 	let theDate = moment().startOf('hour').fromNow();
 
 	function updateDescription(description) {
