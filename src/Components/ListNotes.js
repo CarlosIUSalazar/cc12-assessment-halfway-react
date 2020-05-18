@@ -86,6 +86,7 @@ const ListNotes = () => {
             ))}
           </tbody>
         </table>
+
       </Fragment>
     );
   };

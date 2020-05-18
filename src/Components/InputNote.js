@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditNote from './EditNote'
 import firebase from '../firebase'
+import moment from 'moment'
 
 const db = firebase.firestore()
 
@@ -13,10 +14,20 @@ const InputNote = () => {
     
     const onSubmitForm = (e) => {
         e.preventDefault();
+
+
+        const body = description;   //ESTABA DESTRUCTURED PERO NO SE PORQUE?! 
+        let theDate = moment().startOf('hour').fromNow(); 
+        // let description = body;
+        // let extractedTitle = description.substr(0, 29);
+        // let titleAndDate = (extractedTitle + "...   " + theDate)
+        //console.log("ExtractedTitle is", extractedTitle)
+        //console.log("body is", body)
+        //console.log("BODYYYYY", body)
         db.collection("MyNotes").add({
-            MyTitle: "Los Angeles",
-            MyText: "CA",
-            MyDate: "Today"
+            MyTitle: (body.substr(0, 39)+ `........` + theDate),
+            MyText: description,
+            MyDate: theDate
         })
         .then(function() {
             console.log("Document successfully written!");
@@ -28,6 +39,20 @@ const InputNote = () => {
         
 
     }
+
+    function deleteNotesOnTable(){
+        db.collection("MyNotes")
+        .get()
+        .then(res => {
+          res.forEach(element => {
+            element.ref.delete();
+          });
+          setTimeout(function(){ window.location = "/" }, 1300);
+          
+        });
+        //setTimeout(function(){ window.location.reload(true); }, 1);
+      }
+
 
     return (
         <Fragment>
@@ -41,6 +66,9 @@ const InputNote = () => {
                 />  
                 <button className="btn btn-success">Add</button>
             </form>
+            <>
+            <button className="btn btn-danger" onClick={deleteNotesOnTable}>Delete All Notes From List</button>
+        </>
         </Fragment>
     )
 };
